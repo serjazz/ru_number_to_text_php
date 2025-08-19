@@ -1,7 +1,7 @@
 # NumberToText - Конвертер чисел в текстовое представление на русском языке
 
 [![PHP Version](https://img.shields.io/badge/PHP-8.1%2B-blue.svg)](https://php.net/releases/8.1)
-[![Test Coverage](https://img.shields.io/badge/coverage-98%25-green)](https://github.com/your-vendor/ru-number-to-text)
+[![Test Coverage](https://img.shields.io/badge/coverage-98%25-green)](https://github.com/serjazz/ru-number-to-text)
 
 PHP-библиотека для преобразования чисел в их текстовое представление на русском языке с учётом грамматических правил. Портированная реализация Python-библиотеки [seriyps/ru_number_to_text](https://github.com/seriyps/ru_number_to_text).
 
@@ -16,7 +16,7 @@ PHP-библиотека для преобразования чисел в их 
 
 ## Установка
 ```bash
-composer require your-vendor/ru-number-to-text
+composer require serjazz/ru-number-to-text
 ```
 
 ## Базовое использование
