@@ -6,9 +6,15 @@ use Serjazz\RuNumberToText\NumberToText;
 
 class NumberToTextTest extends TestCase
 {
-    private NumberToText $converter;
+    /**
+     * @var NumberToText
+     */
+    private $converter;
 
-    protected function setUp(): void
+    /**
+     * @return void
+     */
+    protected function setUp()
     {
         $this->converter = new NumberToText();
     }

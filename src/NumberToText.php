@@ -8,7 +8,10 @@ namespace Serjazz\RuNumberToText;
  */
 class NumberToText
 {
-    public array $units = [
+    /**
+     * @var array
+     */
+    public $units = [
         0 => 'ноль',
         1 => ['один', 'одна'],
         2 => ['два', 'две'],
@@ -21,7 +24,10 @@ class NumberToText
         9 => 'девять'
     ];
 
-    public array $teens = [
+    /**
+     * @var string[]
+     */
+    public $teens = [
         'десять',
         'одиннадцать',
         'двенадцать',
@@ -34,9 +40,15 @@ class NumberToText
         'девятнадцать'
     ];
 
-    public array $tens = [];
+    /**
+     * @var array
+     */
+    public $tens = [];
 
-    public array $hundreds = [
+    /**
+     * @var string[]
+     */
+    public $hundreds = [
         'сто',
         'двести',
         'триста',
@@ -48,13 +60,19 @@ class NumberToText
         'девятьсот'
     ];
 
-    public array $orders = [
+    /**
+     * @var array[]
+     */
+    public $orders = [
         [['тысяча', 'тысячи', 'тысяч'], 'f'],
         [['миллион', 'миллиона', 'миллионов'], 'm'],
         [['миллиард', 'миллиарда', 'миллиардов'], 'm']
     ];
 
-    public string $minus = 'минус';
+    /**
+     * @var string
+     */
+    public $minus = 'минус';
 
     public function __construct()
     {
@@ -77,7 +95,7 @@ class NumberToText
      * @param string $sex
      * @return array
      */
-    private function thousand(int $rest, string $sex): array
+    private function thousand($rest, $sex): array
     {
         $prev = 0;
         $plural = 2;
@@ -127,7 +145,7 @@ class NumberToText
      * @param array|null $main_units - массив конфигурации единиц измерения:
      * @return string
      */
-    public function num2text($num, ?array $main_units = null): string
+    public function num2text($num, $main_units): string
     {
         if ($main_units === null) {
             $main_units = [['', '', ''], 'm'];
@@ -145,7 +163,7 @@ class NumberToText
 
         while ($rest > 0) {
             $current_rest = $rest % 1000;
-            [$plural, $nme] = $this->thousand($current_rest, $_orders[$ord][1]);
+            list($plural, $nme) = $this->thousand($current_rest, $_orders[$ord][1]);
             if (!empty($nme) || $ord == 0) {
                 $name[] = $_orders[$ord][0][$plural];
             }
@@ -171,7 +189,7 @@ class NumberToText
      * @param bool $no_money - не денежные единицы если true (корректно формирует дробную часть при этом)
      * @return string
      */
-    public function decimal2text($value, int $places = 2, ?array $int_units = null, ?array $exp_units = null, bool $no_money = true): string
+    public function decimal2text($value, $places = 2, $int_units, $exp_units, $no_money = true): string
     {
         if ($int_units === null) {
             $int_units = [['', '', ''], 'm'];
